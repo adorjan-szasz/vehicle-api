@@ -1,0 +1,169 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Vehicle API",
+        "description": "API documentation for managing vehicles",
+        "contact": {
+            "email": "support@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Get a list of vehicles",
+                "operationId": "ec407c20094a18b143c36165ac4faf7d",
+                "parameters": [
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "Number of vehicles to retrieve",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 50
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of vehicles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Vehicle"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Vehicle": {
+                "required": [
+                    "type",
+                    "brand",
+                    "model",
+                    "year",
+                    "engine_cc",
+                    "fuel_type",
+                    "price",
+                    "currency"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "CAR"
+                    },
+                    "brand": {
+                        "type": "string",
+                        "example": "Toyota"
+                    },
+                    "model": {
+                        "type": "string",
+                        "example": "Corolla"
+                    },
+                    "year": {
+                        "type": "integer",
+                        "example": 2020
+                    },
+                    "engine_cc": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 1800
+                    },
+                    "fuel_type": {
+                        "type": "string",
+                        "example": "Petrol"
+                    },
+                    "is_hybrid": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "is_electric": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 20000
+                    },
+                    "currency": {
+                        "type": "string",
+                        "example": "USD"
+                    },
+                    "color": {
+                        "type": "string",
+                        "example": "Red"
+                    },
+                    "mileage": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 15000
+                    },
+                    "mileage_unit": {
+                        "type": "string",
+                        "example": "KM"
+                    },
+                    "consumption": {
+                        "type": "string",
+                        "example": "6.5L/100km"
+                    },
+                    "consumption_unit": {
+                        "type": "string",
+                        "example": "LITER"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "url"
+                        }
+                    },
+                    "discount": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 5
+                    },
+                    "stock": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "deleted_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Vehicles",
+            "description": "Vehicles"
+        }
+    ]
+}
